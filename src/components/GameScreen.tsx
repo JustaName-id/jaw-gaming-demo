@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAccount, useReadContract } from 'wagmi';
 import { formatUnits } from 'viem';
 import { Account } from '@jaw.id/core';
+import { useReverseResolve } from '@justaname.id/react';
 import { Coin } from './Coin';
 import { useGame } from '../hooks/useGame';
 import { USDC_ADDRESS, USDC_ABI, USDC_DECIMALS } from '../config/constants';
@@ -17,7 +18,9 @@ interface GameScreenProps {
 
 export function GameScreen({ permissionId, accessKeyAccount, sessionExpiry, onSessionExpired }: GameScreenProps) {
   const { address } = useAccount();
+  const { ensName } = useReverseResolve({ address });
   const { clicks, pendingTxs, error, txConfirmed, handleClick } = useGame(permissionId, accessKeyAccount);
+  const gamerTag = ensName || `${address?.slice(0, 6)}...${address?.slice(-4)}`;
   const [timeLeft, setTimeLeft] = useState('');
 
   const { data: balance, refetch: refetchBalance } = useReadContract({
@@ -66,6 +69,7 @@ export function GameScreen({ permissionId, accessKeyAccount, sessionExpiry, onSe
 
   return (
     <div className="screen game-screen">
+      <p className="gamer-tag">{gamerTag}</p>
       <div className="game-hud">
         <div className="hud-item">
           <span className="hud-label">Balance</span>

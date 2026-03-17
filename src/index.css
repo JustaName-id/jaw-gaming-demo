@@ -76,10 +76,10 @@ h2 {
   max-width: 400px;
 }
 
-.address {
-  font-size: 0.5rem;
+.gamer-tag {
+  font-size: 0.7rem;
   color: var(--neon-yellow);
-  word-break: break-all;
+  text-shadow: 0 0 6px var(--neon-yellow);
 }
 
 .btn {

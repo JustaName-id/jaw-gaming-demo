@@ -2,6 +2,7 @@ import { useAccount } from 'wagmi';
 import { useGrantPermissions } from '@jaw.id/wagmi';
 import { Account } from '@jaw.id/core';
 import { parseUnits } from 'viem';
+import { useReverseResolve } from '@justaname.id/react';
 import { useAccessKey } from '../hooks/useAccessKey';
 import {
   USDC_ADDRESS,
@@ -18,6 +19,7 @@ interface SetupScreenProps {
 
 export function SetupScreen({ onPermissionGranted }: SetupScreenProps) {
   const { address } = useAccount();
+  const { ensName, isReverseResolveLoading } = useReverseResolve({ address });
   const { isCreating, createAccessKey } = useAccessKey();
   const { mutate: grant, isPending: isGranting } = useGrantPermissions();
 
@@ -51,7 +53,11 @@ export function SetupScreen({ onPermissionGranted }: SetupScreenProps) {
   return (
     <div className="screen setup-screen">
       <h2>Welcome!</h2>
-      <p className="address">{address}</p>
+      <p className="gamer-tag">
+        {isReverseResolveLoading
+          ? 'Loading...'
+          : ensName || `${address?.slice(0, 6)}...${address?.slice(-4)}`}
+      </p>
       <p className="info">
         Grant a session to play. Each click costs 0.1 USDC.
         Sessions last 1 hour with a 2 USDC limit.
