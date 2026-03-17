@@ -2,7 +2,7 @@
 
 An interactive arcade game demo built on Base Sepolia where users click a coin to earn points. Each click costs 0.1 USDC and is submitted as a gasless blockchain transaction using account abstraction.
 
-> **100% Agentic Coded** — This entire app was built by AI agents using Claude Code with the [jaw-sdk-best-practices](https://github.com/anthropics/claude-code-skills) skill, which provides guidance on JAW SDK patterns, APIs, and integration best practices.
+> **100% Agentic Coded** — This entire app was built by AI agents using Claude Code with the [jaw-sdk-best-practices](https://github.com/JustaName-id/jaw-skills) skill, which provides guidance on JAW SDK patterns, APIs, and integration best practices.
 
 ## Features
 
