@@ -5,11 +5,15 @@ import { Account } from '@jaw.id/core';
 const STORAGE_KEY = 'AccessKeys';
 
 const paymasterUrl = import.meta.env.VITE_PAYMASTER_URL;
+const paymasterPolicyId = import.meta.env.VITE_PAYMASTER_POLICY_ID;
 
 const accountConfig = {
   chainId: 84532,
   apiKey: import.meta.env.VITE_JAW_API_KEY,
   paymasterUrl,
+  ...(paymasterPolicyId && {
+    paymasterContext: { sponsorshipPolicyId: paymasterPolicyId },
+  }),
 };
 
 export function useAccessKey() {

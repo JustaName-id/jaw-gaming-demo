@@ -67,7 +67,7 @@ export function SetupScreen({ onPermissionGranted }: SetupScreenProps) {
         onClick={handleGetStarted}
         disabled={isLoading}
       >
-        {isCreating ? 'Creating session key...' : isGranting ? 'Granting permission...' : 'Get Started'}
+        {isCreating ? 'Creating session key...' : isGranting ? 'Granting permission...' : 'Start New Session'}
       </button>
     </div>
   );
